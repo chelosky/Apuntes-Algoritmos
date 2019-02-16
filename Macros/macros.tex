@@ -1,0 +1,16 @@
+%% \union - Example: \union{j \in J}{A_j}
+\newcommand{\union}[2]{\underset{#1}\bigcup #2}
+
+%% \inter - like \union, but with \bigcap
+\newcommand{\inter}[2]{\underset{#1}\bigcap #2}
+
+%% \nuevoTitulo - Example \nuevoTitulo{Guia 1} -> Guia 1
+\newcommand{\nuevoTitulo}[1]{\begin{center}\section*{#1}\end{center}}
+
+%%\renewcommand{\qedsymbol}{$\blacksquare$}
+
+%% Redefine the solution title x3
+\renewcommand{\solutiontitle}{\noindent\textbf{Solución:}\par\noindent}
+
+%% \sumatoria - Example \sumatoria{n=1}{\infty} -> sumatoria de n desde 1 a infinito
+\renewcommand{\sumatoria}[2]{\sum\limits_{#1}^{#2}}
