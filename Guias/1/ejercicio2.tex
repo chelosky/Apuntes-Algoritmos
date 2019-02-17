@@ -1,30 +1,33 @@
 \question{
-Se sabe que la suma de los $n>0$ primeros números impares (a partir de 1) siempre suma el cuadrado de la cantidad de los números sumados. Por ejemplo:
-        
-    \begin{eqnarray*}
-        n = 1 &\rightarrow& 1\\
-        n = 2 &\rightarrow& 1 + 3 = 4\\
-        n = 3 &\rightarrow& 1 + 3 + 5 = 9
-    \end{eqnarray*}
-    
-Escriba una ecuación de recurrencia para representar este resultado y resuélvala para demostrar este resultado.
+Determinar el término general de la sucesión en que el término n es igual al anterior más el doble de n. Suponga que inicialmente el término 1 de la sucesión es 2. Describa una tabla con los primeros datos de la sucesión.
 }
+%\begin{proof}
+%\end{proof}
 
 \begin{solution}
-  %\begin{proof}
-  %\end{proof}
-  \begin{align*}
-    a_{n+1} &= a_n + (2n +1) & n \ge 1\\
-  \end{align*}
+  Segun lo indicado en el enunciado, la ecuación de recurrencia seria:
   
   \begin{align*}
-      a_n &=a_{n-1} + 2(n-1) + 1 & n\ge 2 \\
-      a_n &= a_{n-1} + 2n - 1 \\
-      a_n - a_{n-1} &= 2n - 1 & / \cdot \sumatoria{i=2}{n} \\
-      \sumatoria{i=2}{n} (a_i - a_{i-1})  &= 2\sumatoria{i=2}{n}i - \sumatoria{i=2}{n}1 \\
-      a_n - a_1 &= 2 \left[ \frac{n(n+1)}{2}-1\right] - (n- 1)\\
-      a_n - 1 &= n(n+1) -2 -n + 1\\
-      a_n &= n^2 +n -n -2 +2 \\
-      \therefore a_n &= n^2
+    \underbrace{a_{n}}_{\text{\normalfont término n}}  &= 
+    \underbrace{a_{n-1}}_{\text{\normalfont término anterior}} + 
+    \underbrace{2n}_{\text{\normalfont doble de n}} & n \ge 2 \tag{$\ast$}\\
+    \underbrace{a_1}_{\text{\normalfont término inicial}}&= 1
+  \end{align*}
+  Determinamos una tabla con los primeros terminos de la sucesión, tal que:
+  \begin{center}
+    \begin{tabular}{@{}llllll@{}}
+        \toprule
+        n & 1 & 2 & 3  & 4  & 5  \\ \midrule
+        $a_n$ & 2 & 5 & 12 & 20 & 30 \\ 
+        \bottomrule
+    \end{tabular}\\
+  \end{center}
+  \newpage
+  Ahora debido que el dominio de la ecuación ($\ast$) es $n \ge 2$, se calcula la $\sumatoria{k=2}{n}$ en ambos lados de la ecuación, tal que:
+  \begin{align*}
+      \sumatoria{k=2}{n} (a_k - a_{k-1})  &= 2\sumatoria{k=2}{n}k  \\
+      \sumatoria{k=2}{n} (a_k - a_{k-1})  &= 2\left[\sumatoria{k=1}{n}k - \sumatoria{k=1}{1}k \right] \\
+      a_n - a_1 &= 2 \left[ \frac{n(n+1)}{2}-1\right] \\
+      \therefore a_n &= n(n+1) & n\ge 1
   \end{align*}
 \end{solution}

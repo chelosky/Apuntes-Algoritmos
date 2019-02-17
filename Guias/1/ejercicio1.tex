@@ -1,30 +1,47 @@
 \question{
 Se sabe que la suma de los $n>0$ primeros números impares (a partir de 1) siempre suma el cuadrado de la cantidad de los números sumados. Por ejemplo:
-        
-    \begin{eqnarray*}
-        n = 1 &\rightarrow& 1\\
-        n = 2 &\rightarrow& 1 + 3 = 4\\
-        n = 3 &\rightarrow& 1 + 3 + 5 = 9
-    \end{eqnarray*}
+    \begin{align*}
+        n = 1 &\rightarrow 1\\
+        n = 2 &\rightarrow 1 + 3 = 4\\
+        n = 3 &\rightarrow 1 + 3 + 5 = 9
+    \end{align*}
     
 Escriba una ecuación de recurrencia para representar este resultado y resuélvala para demostrar este resultado.
 }
-
 \begin{solution}
-  %\begin{proof}
-  %\end{proof}
-  \begin{align*}
-    a_{n+1} &= a_n + (2n +1) & n \ge 1\\
-  \end{align*}
+  Sea $a_n$ la suma de los primeros $n$ numeros impares comenzando desde el numero $1$, es decir $n \ge 1$. 
   
+  Además, recordad que la formula para obtener el n-esimo numero impar es: $2m + 1$ con $m \ge 0$.
+  
+  Con esta información y los datos entregados por el enunciado, se observa que para la suma de los primeros $n+1$ numeros impares, es decir $a_{n+1}$, seria equivalente a la suma del termino anterior $a_n$ con el n-esimo numero impar. Generando asi la siguiente ecuación de recurrencia:
   \begin{align*}
+    a_{n+1} &= a_n + (2n +1) & n \ge 1 \tag{$\star$} \\
+    a_1 &= 1 \nonumber
+  \end{align*}
+  Note que el valor inicial es $a_1 = 1$.
+  
+  Cabe añadir que para la ecuación ($\star$), se debe hacer un pequeño cambio de variable dado que se desea encontrar el n-esimo termino $a_n$ y no el $(n+1)$-esimo termino $a_{n+1}$. Para lograr dejar la ecuación ($\star$) en terminos de $n$, se reemplaza $n$ por $(n-1)$, tal que:
+  \begin{align*}
+      a_{(n-1)+1} &=a_{(n-1)} + (2(n-1) + 1) & (n-1)\ge 1 \\
       a_n &=a_{n-1} + 2(n-1) + 1 & n\ge 2 \\
-      a_n &= a_{n-1} + 2n - 1 \\
-      a_n - a_{n-1} &= 2n - 1 & / \cdot \sumatoria{i=2}{n} \\
+      a_n &= a_{n-1} + 2n - 1 & n\ge 2 \\
+      a_n - a_{n-1} &= 2n - 1 \tag{$\star '$}\\
+  \end{align*}
+  \newpage
+  Ahora dado que el dominio de la ecuación ($\star '$) es $n \ge 2$, se calcula la $\sumatoria{i=2}{n}$ en ambos lados de la ecuación, tal que:
+  \begin{align*}
+      \sumatoria{i=2}{n} (a_i - a_{i-1})  &= \sumatoria{i=2}{n}2i - \sumatoria{i=2}{n}1
+  \end{align*}
+  Se procede a resolver la sumatorias correspondientes, haciendo uso de la propiedad telescopicas y diversas sumas básicas conocidas.(Para más información ver Apendices)
+  \begin{align*}
       \sumatoria{i=2}{n} (a_i - a_{i-1})  &= 2\sumatoria{i=2}{n}i - \sumatoria{i=2}{n}1 \\
+      a_n - a_1 &= 2 \left[ \sumatoria{i=1}{n}i - \sumatoria{i=1}{1}i   \right] - \sumatoria{i=2}{n}1\\
       a_n - a_1 &= 2 \left[ \frac{n(n+1)}{2}-1\right] - (n- 1)\\
       a_n - 1 &= n(n+1) -2 -n + 1\\
       a_n &= n^2 +n -n -2 +2 \\
-      \therefore a_n &= n^2
+      \therefore a_n &= n^2 & n\ge 1
   \end{align*}
+  Finalmente, se obtiene que la suma de los n primeros numeros impares, es igual al cuadrado de la cantidad de numeros sumados.
 \end{solution}
+%\begin{proof}
+%\end{proof}

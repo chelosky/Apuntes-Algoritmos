@@ -1,0 +1,59 @@
+Según lo indicado en el enunciado del ejercicio, los 2 primeros terminos de la sucesión son:
+$$C_1=1$$
+$$C_2=2$$
+Además, cada termino $C_n$ es la media aritmetica del termino anterior $C_{n-1}$ con la media aritmetica de los terminos $C_{n+1}$ y $C_{n-1}$(termino siguiente y anterior respectivamente). Con esto se logra la siguiente ecuación:
+\begin{align*}
+    C_n &= \frac{C_{n-1} + \frac{C_{n+1}+C_{n-1}}{2}}{2} \\
+    C_n &= \frac{2C_{n-1} + C_{n+1} + C_{n-1}}{4} \\
+    C_n &= \frac{3C_{n-1} + C_{n+1}}{4} \\
+    4C_n &= 3C_{n-1} + C_{n+1} \\
+    C_{n+1} -4C_n + 3C_{n-1} &= 0 \quad ,n \ge 2  \tag{$\vartheta$}
+\end{align*}
+El ejercicio legalmente finaliza aqui, dado que con esto se logra resolver el apartado b del problema. Sin embargo, Recuerde! Usted es informatico! Usted es! INTELIGENTE!(IS THAT A OP REFERENCE!?).
+
+Primeramente, se debe manipular los indices de la ecuación ($\vartheta$), para que solo existan terminos mayores o iguales a n. Para ello se sustituye $n$ por $(n+1)$, obteniendo asi:
+
+\begin{align*}
+    C_{(n+1)+1}-4C_{(n+1)}+3C_{(n+1)-1}&=0 \quad ,(n+1) \ge 2 \\
+    C_{n+2}-4C_{n+1}+3C_{n}&=0 \quad ,n \ge 1 \tag{$\Psi$}
+\end{align*}
+
+La ecuación ({$\Psi$}), se le conoce como una Ecuación Homogénea de primer orden. Para resolverla se asume que existe una solución del tipo $C_n = \lambda^n$ y sustituyendo en ({$\Psi$}) se obtiene:
+
+\begin{align*}
+\lambda^{n+2} -4\lambda^{n+1} + 3\lambda^{n} = 0 
+\end{align*}
+
+
+Considerando que $\lambda\neq0$, entonces es posible dividir por $\lambda^n$ en la ecuación ($\Psi'$), tal que:
+
+\begin{align*}
+  \lambda^{2} -4\lambda + 3 = 0 \tag{$\Upsilon$}  
+\end{align*}
+
+Esta ecuación se llama el polinomio característico vinculado a la ecuación original. Ahora se procede a buscar las raices de la ecuación ($\Upsilon$), tal que:
+ 
+\begin{align*}
+\lambda^{2} -4\lambda + 3 &= 0 \\
+(\lambda -3)(\lambda-1) &= 0
+\end{align*}
+
+Obteniendo asi las raices $\lambda_1=1$ y $\lambda_2=3$, con estas se obtiene la siguiente solución general:
+
+\begin{align*}
+    C_n &= K_1 \lambda^n + K_2 \lambda^n \\
+    C_n &= K_1 \cdot 1^n + K_2 \cdot 3^n \\
+    C_n &= K_1+ K_2 \cdot 3^n \tag{$\Xi$} \\
+\end{align*}
+
+Haciendo uso de los valores iniciales $C_1=1$ y $C_2=2$, se obtiene un sistema de ecuaciónes de 2x2, tal que:
+
+$$C_1=1 \rightarrow 1 = K_1 + 3K_2$$
+$$C_2=2 \rightarrow 2 = K_1 + 9K_2$$
+
+Donde las soluciones de este sistema son $K_1=\frac{1}{2}$ y $K_2=\frac{1}{6}$. Reemplazando estos valores en ($\Xi$), se obtiene:
+
+\begin{align*}
+    C_n &= \frac{1}{2} + \frac{1}{6} \cdot 3^n \\
+    \therefore C_n &= \frac{1}{2} (1 + 3^{n-1}) \quad n \ge 1
+\end{align*}

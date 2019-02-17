@@ -1,0 +1,41 @@
+Primeramente, se debe realizar un pequeño cambio de algebraico para que la ecuación de recurrencia sea en base al termino $p$-esimo y no del $(p+1)$-esimo.
+Para ello se reemplaza el termino $p$ por $(p-1)$, tal que:
+\begin{align*}
+     T_{(p-1)+1} &= 2T_{(p-1)} +2^{(p-1)} & (p-1)\ge0 \\
+     T_{p} &= 2T_{p-1} +2^{p-1} & p\ge1 \tag{$\uplus$}
+\end{align*}
+Al observar la ecuación ($\uplus$), se observa que es una Ecuación lineal con coeficientes constantes, por ello se debe buscar el factor sumante(Para más info ver Apendice), tal que:
+\begin{align*}
+    S_p = \frac{1}{2^p}
+\end{align*}
+Al multiplicar este factor sumante $S_p$, en ambos lados de la ecuacion ($\uplus$), se obtiene:
+\begin{align*}
+    S_p T_{p} &= 2S_pT_{p-1} +S_p2^{p-1} \\
+    \frac{1}{2^p} T_{p} &= 2\frac{1}{2^p}S_pT_{p-1} +\frac{1}{2^p}2^{p-1} \\
+    \frac{T_p}{2^p} &= \frac{T_{p-1}}{2^{p-1}} + \frac{1}{2} \tag{$\uplus'$}
+\end{align*}
+Ahora definamos que:
+\begin{align*}
+    W_p = \frac{T_p}{2^p} \xrightarrow{\text{tal que}} W_{p-1} = \frac{T_{p-1}}{2^{p-1}}
+\end{align*}
+Al realizar este tipo de cambios, se debe volver a calcular el valor inicial, tal que:
+\begin{align*}
+    W_o = T_0 a_0 S_0 = 1 \cdot 1 \cdot \frac{1}{2^0} = 1 
+\end{align*}
+Haciendo el reemplazo de $W_p$ en la ecuación ($\uplus '$), se obtiene:
+\begin{align*}
+    W_p &= W_{p-1} + \frac{1}{2} \\ 
+    W_p - W_{p-1} &= \frac{1}{2} \quad \text{, } p \ge 1 \tag{$\uplus \uplus $}
+\end{align*}
+Ahora debido que el dominio de la ecuación ({$\uplus \uplus$}) es $p \ge 1$, se calcula la $\sumatoria{i=1}{p}$ en ambos lados de la ecuación, tal que:
+\begin{align*}
+\sumatoria{i=1}{p} (W_p -  W_{p-1}) &= \frac{1}{2}\sumatoria{i=1}{p}1 \\
+W_p - W_0 &= \frac{p}{2} \\
+W_p - 1 &= \frac{p}{2} \\
+W_p &= \frac{p}{2} + 1 \tag{$\uplus\uplus'$} \\
+\end{align*} 
+Sabiendo que $W_p = \frac{T_p}{2^p}$, reemplazamos dicho valor en la ecuación ($\uplus\uplus'$), tal que:
+\begin{align*}
+    \frac{T_p}{2^p} &= \frac{p}{2} + 1\\
+    \therefore T_p &= 2^p\left( \frac{p}{2} + 1 \right) \quad p \ge 0\\
+\end{align*}

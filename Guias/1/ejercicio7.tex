@@ -1,0 +1,35 @@
+\question{
+Describa la ecuación de recurrencia para evaluar el costo $T(n)$ del siguiente algoritmo, contando los productos realizados (instrucción $s = s*A[i]$).
+\begin{lstlisting}
+// Hello.java
+public void Prueba(A,n) {
+    if(n>1){
+        int s=0;
+        for(int i=0;i<=n;i++){
+            s=s*A[i];
+        }
+        Prueba(A,n-1);
+    }
+}    
+\end{lstlisting}
+}
+%\begin{proof}
+%\end{proof}
+
+\begin{solution}
+Sea $T(n)$ la cantidad de veces que se ejecuta la instrucción $s = s*A[i]$. Además, se sabe que el valor inicial es $T(1)=0$, dado que si $n=1$ entonces la instrucción $s = s*A[i]$ no se ejecuta nunca.
+
+En terminos generales, el termino $T(n)$ ejecuta $n$ veces la instrucción $s = s*A[i]$ (Dado por el ciclo for) y luego se llama recursivamente la misma función pero para el termino anterior $T(n-1)$. Con esto la ecuación de recurrencia resultante es:
+
+$$T(n) = n + T(n-1) \quad , n > 1$$
+
+Resolviendo la ecuación se obtiene:
+
+\begin{align*}
+    T(n) - T(n-1) &=  n \quad \text{/}\cdot\sumatoria{i=2}{n} \\
+    \sumatoria{i=2}{n}(T(i) - T(i-1)) &= \sumatoria{i=2}{n}i\\
+    T(n) -T(0) &= \frac{n(n+1)}{2} - 1\\
+    \therefore T(n) &= \frac{n^2 + n- 2}{2} \quad, n\ge 1
+\end{align*}
+
+\end{solution}

@@ -1,0 +1,42 @@
+Primeramente, se debe realizar un pequeño cambio de algebraico para que la ecuación de recurrencia sea en base al termino $m$-esimo y no del $(m+1)$-esimo.
+Para ello se reemplaza el termino $m$ por $(m-1)$, tal que:
+\begin{align*}
+     A_{(m-1)+1} &= 2A_{(m-1)} +5, & (m-1)\ge0 \\
+     A_m &= 2A_{m-1} +5, & m \ge1 \tag{$\dagger$}
+\end{align*}
+Al observar la ecuación ($\dagger$), se observa que es una Ecuación lineal con coeficientes constantes, por ello se debe buscar el factor sumante(Para más info ver Apendice), tal que:
+\begin{align*}
+    S_m = \frac{1}{2^m}
+\end{align*}
+Al multiplicar este factor sumante $S_m$, en ambos lados de la ecuacion ($\dagger$), se obtiene:
+\begin{align*}
+    S_m A_m &= 2S_mA_{m-1} +5S_m \\
+    \frac{1}{2^m} A_m &= 2\frac{1}{2^m}A_{m-1} +5\frac{1}{2^m} \\
+    \frac{1}{2^m} A_m &= \frac{1}{2^{m-1}}A_{m-1} +5\frac{1}{2^m} \tag{$\dagger '$}
+\end{align*}
+Ahora definamos que:
+\begin{align*}
+    W_m = \frac{A_m}{2^m} \xrightarrow{\text{tal que}} W_{m-1} = \frac{A_{m-1}}{2^{m-1}}
+\end{align*}
+Al realizar este tipo de cambios, se debe volver a calcular el valor inicial, tal que:
+\begin{align*}
+    W_o = A_0 a_0 S_0 = 1 \cdot 1 \cdot \frac{1}{2^0} = 1 
+\end{align*}
+Haciendo el reemplazo de $W_m$ en la ecuación ($\dagger '$), se obtiene:
+\begin{align*}
+    W_m &= W_{m-1} +5 \frac{1}{2^m} \\
+    W_m - W_{m-1} &=  +5 \left(\frac{1}{2}\right)^m \quad \text{, } m \ge 1 \tag{$\dagger \dagger$}
+\end{align*}
+Ahora debido que el dominio de la ecuación ({$\dagger \dagger$}) es $m \ge 1$, se calcula la $\sumatoria{k=1}{m}$ en ambos lados de la ecuación, tal que:
+\begin{align*}
+\sumatoria{k=1}{m} (W_k -  W_{k-1}) &= 5\sumatoria{k=1}{m} \left(\frac{1}{2}\right)^m \\ 
+\sumatoria{k=1}{m} (W_k -  W_{k-1}) &= 5 \left[ \sumatoria{k=0}{m} \left(\frac{1}{2}\right)^m - \sumatoria{k=0}{0}\left(\frac{1}{2}\right)^m \right]  \\ 
+W_m -  W_0 &= 5 \left[ \frac{\left(\frac{1}{2}\right)^{m+1}-1}{\frac{1}{2}-1} \right]  \\
+W_m -  1 &= 5 \left[ 2 - \frac{1}{2^m} -1 \right]  \\
+W_m &= 6 - \frac{5}{2^m} \tag{$\dagger\dagger '$}
+\end{align*} 
+Sabiendo que $W_m = \frac{A_m}{2^m}$, reemplazamos dicho valor en la ecuación ($\dagger\dagger'$), tal que:
+\begin{align*}
+    \frac{A_m}{2^m} &= 6 - \frac{5}{2^m}\\
+    \therefore A_m &= 6 \cdot 2^m - 5 \quad m \ge 0\\
+\end{align*}

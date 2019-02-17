@@ -1,0 +1,51 @@
+\question{
+Resolver la siguiente ecuación, usando factor sumante, en que $n!$ es $n$ factorial:
+\begin{align*}
+(n + 1)T_n &= 3T_{n-1} + \frac{2}{n!} , n \ge 1 \\
+T_0 &= 0
+\end{align*}
+}
+%\begin{proof}
+%\end{proof}
+
+\begin{solution}
+Recordad nuevamente que el factor sumante esta dado por:
+$$S_n= \frac{a_{n-1}a_{n-2}a_{n-3}\cdots a_1a_0}{b_nb_{n-1}b_{n-2}\cdots b_2b_1}$$
+Para esta ecuación se observa que:
+$$\underbrace{(n + 1)}_{a_n}T_n = \underbrace{3}_{b_n}T_{n-1} + \frac{2}{n!}$$
+Como $b_n$ es constantes, no varia para ningun valor de n. Sin embargo, para $a_n$ es un termino que depende directamente de $n$, por lo que su valor variara segun el valor de $n$, es decir:
+\begin{align*}
+    a_0&=(0+1)=1 &\|& &b_0&=3 \\
+    a_1&=(1+1)=2 &\|& &b_1&=3 \\
+    a_2&=(2+1)=3 &\|& &b_2&=3 \\
+    &&\vdots&&&\\
+    a_{n-2}&=(n-2+1)=n-1 &\|& &b_{n-2}&=3 \\
+    a_{n-1}&=(n-1+1)=n &\|& &b_{n-1}&=3 \\
+    a_n &=n+1 &\|& &b_n&=3
+\end{align*}
+Con esto en mente, el factor sumante resultante para este ejercicio es:
+\begin{align*}
+    S_n &= \frac{(n-1+1)\cdot(n-2+1)\cdot(n-3+1)\cdots(1+1)\cdot(0+1)}{3\cdot3\cdot3\cdots3\cdot3} \\
+    S_n &= \frac{n\cdot(n-1)\cdot(n-2)\cdots2\cdot1}{3^n} \\
+    S_n &= \frac{n!}{3^n}
+\end{align*}
+Multiplicamos este factor sumante $S_n$ en la ecuacion original, tal que:
+\begin{align*}
+   (n + 1)S_nT_n &= 3S_nT_{n-1} + \frac{2}{n!}S_n \\
+   (n + 1)\frac{n!}{3^n}T_n &= 3\frac{n!}{3^n}T_{n-1} + \frac{2}{n!}\frac{n!}{3^n} \\
+   \frac{(n+1)!}{3^n}T_n &= \frac{n!}{3^{n-1}}T_{n-1} + \frac{2}{3^n} \tag{$\kappa$}
+\end{align*}
+Definamos:
+$$W_n = \frac{(n+1)!}{3^n}T_n \xrightarrow{\text{con}} W_0 = T_0a_0S_0 =0\cdot1\cdot1=0$$
+Reemplazamos $W_n$ en ($\kappa$), tal que:
+\begin{align*}
+    W_n &= W_{n-1} + \frac{2}{3^n} \quad n \ge 1\\
+    W_n - W_{n-1} &= 2 \left(\frac{1}{3}\right)^n \quad \text{/}\cdot\sumatoria{k=1}{n} \\
+    \sumatoria{k=1}{n}(W_k - W_{k-1}) &= 2\sumatoria{k=1}{n} \left(\frac{1}{3}\right)^k \\
+    W_n - W_0 &= 2\left[ \sumatoria{k=0}{n} \left(\frac{1}{3}\right)^k - \sumatoria{k=0}{0} \left(\frac{1}{3}\right)^k \right] \\
+    W_n - 0 &= 2\left[  \frac{\left(\frac{1}{3}\right)^{n+1}-1}{\left(\frac{1}{3}\right)-1} - 1 \right]\\
+    W_n &= 3 - \frac{1}{3^n} -2 \quad \text{,}W_n=\frac{(n+1)!}{3^n}T_n\\
+    \frac{(n+1)!}{3^n}T_n &= 3 - \frac{1}{3^n} -2\\
+    \therefore T_n &= \frac{3^n -1}{(n+1)!} \quad n \ge 0
+\end{align*}
+\end{solution}

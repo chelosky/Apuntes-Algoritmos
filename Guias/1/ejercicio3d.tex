@@ -1,0 +1,13 @@
+\begin{align*}
+    P_{n+1} &= P_n + 3n^{2}-n\quad ,n\ge0 \quad ,P_0=3\\
+    P_{(n-1)+1} &= P_{(n-1)} + 3(n-1)^{2}-(n-1)\quad ,(n-1)\ge0\\
+    P_{n} &= P_{n-1} + 3n^2 -6n +3 -n+1\quad ,n\ge1\\
+    P_{n} - P_{n-1} &= 3n^2 -7n +4\quad \text{/}\cdot\sumatoria{k=1}{n}\\
+    \sumatoria{k=1}{n}(P_{k} - P_{k-1}) &= 3\sumatoria{k=1}{n}k^2 -7\sumatoria{k=1}{n}k +4\sumatoria{k=1}{n}1 \quad ,n\ge1\\
+    P_n - P_0 &= 3\left[\frac{n(n+1)(2n+1)}{6} \right] -7\left[\frac{n(n+1)}{2}\right] +4n \\
+    P_n - 3 &= \frac{n(n+1)(2n+1)}{2} - \frac{7n(n+1)}{2} + 4n\quad \text{/}\cdot2 \\
+    2P_n - 6 &= n(n+1)(2n+1) - 7n(n+1) + 8n \\
+    2P_n &= 2n^3 +3n^2 +n - 7n^2 -7n + 8n +6\\
+    2P_n &= 2n^3 -4n^2 +2n +6\\
+    \therefore P_n &= n^3 -2n^2 +n +3 \quad n \ge 0
+\end{align*}
