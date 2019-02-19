@@ -1,0 +1,23 @@
+\question{
+Para el siguiente algortimo, sabiendo que inicialmente se le llama con Prueba(A, 1, n) para $n > 0$, escriba y resuelva una ecuación de recurrencia para la cantidad de sumas realizadas (instrucción $/***/$):
+
+\begin{lstlisting}
+// Ejercicio3_Guia3.java
+public int Prueba(int[] A,int i,int j) {
+    if(i >= j){
+        return(A[j]);
+    }else{
+        int s=0;
+        for(int k=i; k <= j/3;k++){
+            s = s + A[k]; /***/
+        }
+        Prueba(A, j/3 +1,(2*j)/3);
+        Prueba(A, (2*j)/3 +1,j);
+    }
+}    
+\end{lstlisting}
+
+}
+\begin{solution}
+  JEJEJEJEJEJEJEJEJEJJEJE
+\end{solution}

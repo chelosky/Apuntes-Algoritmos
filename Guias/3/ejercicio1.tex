@@ -1,0 +1,46 @@
+\question{
+Resolver la ecuación con un cambio de variable:
+
+$T(n) = 2T(n/3) + n/3, n > 1$
+
+$T(1) = 0$
+}
+\begin{solution}
+  En primer lugar debemos determinar que cambio de variable aplicaremos, esto se hace determinando los primeros terminos de la sucesión:
+  \begin{center}
+    \begin{tabular}{@{}llllll@{}}
+        \toprule
+        n & 1 & 3 & 9 & 27 \\ \midrule
+        T(n) & 0 & 1 & 5 & 19 \\ 
+        \bottomrule
+    \end{tabular}\\
+  \end{center}
+  
+  Podemos observar que n es múltiplo de 3 ($3^0$ = 1, $3^1$ = 3, $3^2$ = 9,...), por lo tanto el cambio de variable que debemos hacer es:
+  \begin{center}
+      n = $3^k$, con $k \ge 0$
+  \end{center}
+  
+  Aplicamos el cambio de variable a la ecuación de recurrencia inicial ($T(n) = 2T(n/3) + n/3$):
+  
+  \begin{center}
+      T($3^k$) = 2T($3^k$/3) + $3^k$/3
+      
+      T($3^k$) = 2T($3^{k-1}$) + $3^{k-1}$
+  \end{center}
+  
+  Hacemos una nueva sustitución para poder resolver la ecuación y determinamos su condición inicial:
+  \begin{center}
+      $X_k$ = T($3^k$) \implies $X_{k-1}$ = T($3^{k-1}$)
+      
+      La condición inicial la determinamos asignando k = 0:
+      
+      Si k = 0 \implies n = 1 \implies T(1) = 0
+      
+      Por lo tanto la condición inicial queda:
+      
+      $X_0$ = 0
+      
+  \end{center}
+  
+\end{solution}

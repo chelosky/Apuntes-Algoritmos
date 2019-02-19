@@ -1,0 +1,93 @@
+\question{
+Para el siguiente algoritmo, determinar la cantidad de veces $C(n)$ que se ejecuta la instrucción /***/ en Ensayo(A, n), en que $n \ge 0$. Resuelva la ecuación usando funciones generatrices.
+\begin{lstlisting}
+// Ejercicio2_Guia4.java
+public int Ensayo(int[] A,int n) {
+    if(n == 0){
+        return(0);
+    }else{
+        if(n==1){
+            int x = 2*A[1]; /***/
+            return(x);
+        }else{
+            Ensayo(A,n-2);
+            Ensayo(A,n-1);
+            Ensayo(A,n-2);
+        }
+    }
+}    
+\end{lstlisting}
+}
+%\begin{proof}
+%\end{proof}
+
+\begin{solution}
+Segun lo indicado en el enunciado, sea $C(n)$ la cantidad de veces que se ejecuta la instrucción $/***/$. 
+
+Al observar el algoritmo, se obtienen $2$ valores iniciales, los cuales son: 
+\begin{itemize}
+    \item $C(0)=0$, el cual se obtiene dado que si $n=0$ no se ejecuta nunca la instrucción $/***/$.
+    \item $C(1)=1$, el cual se obtiene si el valor de $n=1$ lo cual provoca que la instrucción $/***/$ se ejecute solamente $1$ vez.
+\end{itemize}
+
+En terminos generales, si el termino $C(n)$ posee un valor para $n > 1$, entonces el algoritmo llama $3$ veces recursivamente la misma función, $2$ veces para el termino $T(n-2)$ y $1$ vez para $T(n-1)$. Con esto la ecuación de recurrencia resultante es:
+
+$$C(n) = C(n-1) + 2C(n-2) \quad , n \ge 2$$
+
+Sin embargo, para poder aplicar el funciones generatrices, los indices del termino $C(n)$ deben ser mayores o iguales a $n$. Para ello se sustituye $n$ por $(n+2)$, obteniendo asi:
+
+\begin{align*}
+    C((n+2)) &= C((n+2)-1) + 2C((n+2)-2) \quad , (n+2) \ge 2 \\
+    C(n+2) &= C(n+1) + 2C(n) \quad , n \ge 0\\
+    C(n+2) - C(n+1) - 2C(n)  &= 0 \quad , n \ge 0 \tag{$\star$}
+\end{align*}
+%\mathfrak{S}\left[ C(n) \right]
+Aplicamos función generatriz $\mathfrak{S}$ en ambos lados de la ecuación ($\star$), tal que:
+%\quad \text{/}\cdot\sumatoria{i=2}{n} 
+\begin{align*}
+    C(n+2) - C(n+1) - 2C(n) &= 0 \quad \text{/}\cdot \mathfrak{S}()\\
+    \mathfrak{S}\left[ C(n+2) - C(n+1) - 2C(n) \right] &= \mathfrak{S}[0]\\
+    \mathfrak{S}\left[ C(n+2) \right] - \mathfrak{S}\left[ C(n+1) \right] - 2\mathfrak{S}\left[ C(n) \right] &=0 \\
+    \frac{\mathfrak{S}\left[ C(n) \right] - C(0) -C(1)z}{z^2} - \frac{\mathfrak{S}\left[ C(n)\right]-C(0)}{z} - 2 \mathfrak{S}\left[ C(n) \right] &= 0 \quad \text{/}\cdot z^2\\
+    \mathfrak{S}\left[ C(n) \right] - C(0) -C(1)z -\mathfrak{S}\left[ C(n) \right]z+C(0) -2\mathfrak{S}\left[ C(n) \right]z^2 &=0 \\
+    \mathfrak{S}\left[ C(n) \right] -z -\mathfrak{S}\left[ C(n) \right]z -2\mathfrak{S}\left[ C(n) \right]z^2 &=0 \\
+    \mathfrak{S}\left[ C(n) \right](1 -z -2z^2) -z &=0 \\
+    \mathfrak{S}\left[ C(n) \right](1+z)(1-2z) &=z \\
+    \mathfrak{S}\left[ C(n) \right] &=\frac{z}{(1+z)(1-2z)} \tag{$\ddagger$}
+\end{align*}
+Ahora debemos descomponer la fracción dada en la ecuación ($\ddagger$) con el fin de poder utilizar las funciones generatrices inversas. La descomposición en fracciones parciales es:
+
+\begin{align*}
+    \frac{z}{(1+z)(1-2z)} &= \frac{A}{1+z}+ \frac{B}{1-2z} \quad \text{/}\cdot (1+z)(1-2z) \\
+    z &= A(1-2z) + B(1+z) \\
+    z + 0 &= A + B + -2Az + Bz \tag{$\ddagger'$}
+\end{align*}
+Ahora debemos encontrar valores de $A$ y $B$ para que la ecuación ($\ddagger'$) se cumpla, para ello se resuelve un sistema de ecuaciones de 2x2, tal que:
+
+$$
+  \left.
+    \begin{array}{l}
+       A + B = 0\\
+      -2A + B = 1
+      \end{array}
+  \right\}
+  \begin{array}{l}
+       A= -\frac{1}{3}  \\
+       B= \frac{1}{3}
+  \end{array}
+$$
+
+Reemplazando dichos valores en la ecuación ($\ddagger$), se obtiene que:
+
+\begin{align*}
+    \mathfrak{S}\left[ C(n) \right] &= \frac{-\frac{1}{3}}{1+z} + \frac{\frac{1}{3}}{1-2z}\\
+    \mathfrak{S}\left[ C(n) \right] &= -\frac{1}{3}\cdot \frac{1}{(1-(-1)z)} + \frac{1}{3}\cdot\frac{1}{(1-2z)} \tag{$\ddagger\ddagger$}
+\end{align*}
+Ahora aplicamos función generatriz inversa $\mathfrak{S}^{-1}$ en ambos lados de la ecuación ($\ddagger\ddagger$), tal que:
+\begin{align*}
+    \mathfrak{S}^{-1}\left[ \mathfrak{S}\left[ C(n) \right] \right] &= \mathfrak{S}^{-1}\left[ -\frac{1}{3}\cdot \frac{1}{(1-(-1)z)} + \frac{1}{3}\cdot\frac{1}{(1-2z)} \right] \\
+    C(n) &= -\frac{1}{3}\mathfrak{S}^{-1}\left[\frac{1}{(1-(-1)z)} \right] + \frac{1}{3}\mathfrak{S}^{-1}\left[\frac{1}{(1-2z)} \right]\\
+    C(n)&=-\frac{1}{3}\cdot(-1)^{n} + \frac{1}{3}\cdot 2^n \\
+    \therefore C(n) &= \frac{1}{3}\left(2^n -(-1)^n\right)\quad, n\ge0
+\end{align*}
+\end{solution}
