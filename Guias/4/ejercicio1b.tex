@@ -1,0 +1,53 @@
+Para este ejercicio aplicamos nuevamente la función generatriz $\mathfrak{S}$  en ambos lados de la ecuación de recurrencia original, obteniendo asi:
+
+\begin{align*}
+    \funcGeneratriz{X_{n+2} + 2X_{n+1} + X_n} &= \funcGeneratriz{3^n}\\
+    \funcGeneratriz{X_{n+2}} + 2\funcGeneratriz{X_{n+1}} + \funcGeneratriz{X_n} &= \funcGeneratriz{3^n}\\
+    \frac{\funcGeneratriz{X_n}-X_0-X_1z}{z^2} +2\frac{\funcGeneratriz{X_n}-X_0}{z} + \funcGeneratriz{X_n} &= \frac{1}{1-3z}\quad\text{/}\cdot z^2\\
+    \funcGeneratriz{X_n} - z +2\funcGeneratriz{X_n}z + \funcGeneratriz{X_n}z^2 &= \frac{z^2}{1-3z}\\
+    \funcGeneratriz{X_n}(1+2z+z^2)&=\frac{z^2}{1-3z} +z\\
+    \funcGeneratriz{X_n}(1+z)^2 &= \frac{z^2}{1-3z}+z\quad\text{/}\cdot\frac{1}{(1+z)^2}\\
+    \funcGeneratriz{X_n}&= \underbrace{ \frac{z^2}{(1-3z)(1+z)^2}}_{H_a} + \frac{z}{(1+z)^2} \tag{$\odot$}
+\end{align*}
+Proseguimos descomponiendo la fracción $H_a$  de la ecuación ($\odot$), por lo que se debe hacer uso de las fracciones parciales.
+
+La descomposición de $H_a$, seria:
+
+\begin{align*}
+    \frac{z^2}{(1-3z)(1+z)^2} &= \frac{A}{1-3z} + \frac{B}{1+z} + \frac{Cz}{(1+z)^2}\quad\text{/}\cdot(1-3z)(1+z)^2\\
+    z^2 &= A(1+z)^2 + B(1-3z)(1+z) +Cz(1-3z)\\
+    z^2 &= A(1+2z+z^2) + B(1-2z-3z^2)+C(z-3z^2) \tag{$\heartsuit$}
+\end{align*}
+
+Ahora debemos encontrar los valores de A,B y C tal que la ecuación ($\heartsuit$) cumpla la igualdad, para ello se resuelve un sistema de ecuaciones de 3x3, tal que:
+
+$$
+    \left.
+      \begin{array}{rcr}
+       A + B &=& 0\\
+      2A -2B +C &=& 0 \\
+      A - 3B - 3C &=& 1
+      \end{array}
+    \right\}
+    \begin{array}{l}
+       A= \frac{1}{16} \\
+       B= -\frac{1}{16} \\
+       C= -\frac{1}{4}
+    \end{array}
+$$
+
+Reemplazamos dichos valores en $H_a$ de la ecuación ($\odot$), tal que:
+
+\begin{align*}
+    \funcGeneratriz{X_n}&= \frac{1}{16} \cdot \frac{1}{1-3z} -\frac{1}{16}\cdot \frac{1}{1+z} -\frac{1}{4}\cdot \frac{z}{(1+z)^2} + \frac{z}{(1+z)^2} \tag{$\spadesuit$}
+\end{align*}
+
+Ahora aplicamos función generatriz inversa $\mathfrak{S}^{-1}$ en ambos lados de la ecuación ($\spadesuit$), tal que:
+
+\begin{align*}
+    \funcInvGeneratriz{\funcGeneratriz{X_n}}&= \funcInvGeneratriz{\frac{1}{16} \cdot \frac{1}{1-3z} -\frac{1}{16}\cdot \frac{1}{1+z} -\frac{1}{4}\cdot \frac{z}{(1+z)^2} + \frac{z}{(1+z)^2} }\\
+    \funcInvGeneratriz{\funcGeneratriz{X_n}}&= \funcInvGeneratriz{\frac{1}{16} \cdot \frac{1}{1-3z}} -\funcInvGeneratriz{\frac{1}{16}\cdot \frac{1}{1+z}} -\funcInvGeneratriz{\frac{1}{4}\cdot \frac{z}{(1+z)^2}} + \funcInvGeneratriz{\frac{z}{(1+z)^2}}\\
+    \funcInvGeneratriz{\funcGeneratriz{X_n}}&= \frac{1}{16} \cdot\funcInvGeneratriz{\frac{1}{1-3z}} -\frac{1}{16}\cdot\funcInvGeneratriz{ \frac{1}{1+z}} +\frac{1}{4}\cdot\funcInvGeneratriz{ \frac{-z}{(1-(-z))^2}} - \funcInvGeneratriz{\frac{-z}{(1-(-z))^2}}\\
+    X_n &= \frac{1}{16}\cdot3^n - \frac{(-1)^n}{16}+\frac{1}{4}\cdot n(-1)^n - n\cdot(-1)^n\\
+    \therefore X_n &= \frac{1}{16}\cdot3^n - \frac{(-1)^n}{16}-\frac{3}{4}n(-1)^n\quad,n\ge0
+\end{align*}

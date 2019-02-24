@@ -1,0 +1,72 @@
+Aplicando la función generatriz $\mathfrak{S}$  en ambos lados de la ecuación de recurrencia original, obteniendo asi:
+
+\begin{align*}
+    \funcGeneratriz{X_{n+1}} &= \funcGeneratriz{2X_n + n + 1 + 2^{n+1}} \\
+    \funcGeneratriz{X_{n+1}} &= 2\funcGeneratriz{X_n} + \funcGeneratriz{n} + \funcGeneratriz{1} + 2\funcGeneratriz{2^n} \\
+    \frac{\funcGeneratriz{X_n}+X_o}{z} &= 2\funcGeneratriz{X_n} + \frac{z}{(1-z)^2} + \frac{1}{1-z} + 2 \cdot \frac{1}{1-2z} \quad \text{/}\cdot z\\
+    \funcGeneratriz{X_n} &= 2\funcGeneratriz{X_n}z + \frac{z^2}{(1-z)^2} + \frac{z}{1-z} + 2\cdot \frac{z}{1-2z}\\
+    \funcGeneratriz{X_n} - 2\funcGeneratriz{X_n}z &= \frac{z^2}{(1-z)^2} + \frac{z}{1-z} + 2\cdot \frac{z}{1-2z}\\
+    \funcGeneratriz{X_n}(1 - 2z) &= \frac{z^2}{(1-z)^2} + \frac{z}{1-z} + 2\cdot \frac{z}{1-2z} \quad \text{/}\cdot \frac{1}{(1-2z)}\\
+    \funcGeneratriz{X_n} &= \underbrace{\frac{z^2}{(1-z)^2(1 - 2z)} }_{S_A} + \underbrace{\frac{z}{(1-z)(1 - 2z)}}_{S_B} + 2\cdot \frac{z}{(1-2z)^2} \tag{$\star$}
+\end{align*}
+Para dar resolución a la ecuación ($\star$) se debe aplicar fracciones parciales tanto para la sub-partición $S_A$ y sub-partición $S_B$, tal que:
+\begin{enumerate}
+    \item[Para $S_A$] la descompisición seria:
+    \begin{align*}
+        \frac{z^2}{(1-z)^2(1-2z)} &= \frac{A}{1-2z} + \frac{B}{1-z} + \frac{Cz}{(1-z)^2} \quad\text{/}\cdot (1-z)^2(1-2z) \tag{$\leftmoon$} \\
+        z^2 &= A(1-z)^2 + B(1-z)(1-2z)+ Cz(1-2z) \\
+        z^2 &= A(1-2z+z^2) + B(1-3z+2z^2) + C(z-2z^2) \\
+        z^2 &= A(1-2z+z^2) + B(1-3z+2z^2) + C(z-2z^2) \tag{$\dagger$}
+    \end{align*}
+    Ahora debemos encontrar valores de A,B y C para que la igualdad de la ecuación ($\dagger$) se cumpla, para ello se resuelve un sistema de ecuaciones de 3x3, tal que:
+    $$
+    \left.
+      \begin{array}{rcr}
+       A + B &=& 0\\
+      -2A -3B +C &=& 0 \\
+      A + 2B - 2C &=& 1
+      \end{array}
+    \right\}
+    \begin{array}{l}
+       A= 1  \\
+       B= -1 \\
+       C= -1
+    \end{array}
+    $$
+    Reemplazando dichos valores en ($\leftmoon$) se obtiene:
+    $$\frac{z^2}{(1-z)^2(1-2z)} = \frac{1}{1-2z} - \frac{1}{1-z} - \frac{z}{(1-z)^2}$$
+    \item[Para $S_B$] la descomposición seria:
+    \begin{align*}
+        \frac{z}{(1-z)(1-2z)} &= \frac{A}{1-z} + \frac{B}{1-2z} \quad \text{/}\cdot (1-z)(1-2z) \tag{$\rightmoon$}\\
+        z &= A(1-2z) + B(1-z) \tag{$\ddagger$}
+    \end{align*}
+    Ahora se debe obtener los valores de A y B tal que la ecuación ($\ddagger$) se cumpla, para ello se usa un sistema de ecuaciones de 2x2, tal que:
+    $$
+    \left.
+      \begin{array}{rcr}
+       A + B &=& 0\\
+      -2A -B &=& 1
+      \end{array}
+    \right\}
+    \begin{array}{l}
+       A= -1  \\
+       B= 1
+    \end{array}
+    $$
+    Reemplazando dichos valores en ($\rightmoon$), tal que:
+    $$ \frac{z}{(1-z)(1-2z)} = -\frac{1}{1-z} + \frac{1}{1-2z} $$
+\end{enumerate}
+Finalmente, reemplazando las descomposiciones de la fracciones obtenidas para $S_A$ y $S_B$ en la ecuación ($\star$), se obtiene que:
+
+\begin{align*}
+    \funcGeneratriz{X_n} &= \frac{1}{1-2z} - \frac{1}{1-z} - \frac{z}{(1-z)^2} -\frac{1}{1-z} + \frac{1}{1-2z} + 2\cdot \frac{z}{(1-2z)^2} \\ 
+    \funcGeneratriz{X_n} &= \frac{2}{1-2z} - \frac{2}{1-z} - \frac{z}{(1-z)^2} + \frac{2z}{(1-2z)^2} \tag{$\fullmoon$}
+\end{align*}
+
+Ahora aplicamos función generatriz inversa $\mathfrak{S}^{-1}$ en ambos lados de la ecuación ($\fullmoon$), tal que:
+
+\begin{align*}
+    \funcInvGeneratriz{\funcGeneratriz{X_n}} &= \funcInvGeneratriz{\frac{2}{1-2z} - \frac{2}{1-z} - \frac{z}{(1-z)^2} + \frac{2z}{(1-2z)^2}}\\
+    \funcInvGeneratriz{\funcGeneratriz{X_n}} &= \funcInvGeneratriz{\frac{2}{1-2z}} - \funcInvGeneratriz{\frac{2}{1-z}} - \funcInvGeneratriz{\frac{z}{(1-z)^2}} + \funcInvGeneratriz{\frac{2z}{(1-2z)^2}}\\
+    \therefore X_n &= 2\cdot2^n - 2 - n + 2^nn, \quad , n\ge0
+\end{align*}
