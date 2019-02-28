@@ -9,5 +9,49 @@ Resolver la ecuación
 %\begin{proof}
 %\end{proof}
 \begin{solution}
-SOLUCION
+Primeramente la ecuación original se re-escribir como:
+\begin{align*}
+    p(n)-7p(n-1) +12p(n-2) &=3n +5 \tag{$\dagger$}
+\end{align*}
+Este tipo de ecuaciones se llama Ecuación NO Homogénea de primer orden. Para resolver este tipo de ecuaciones se hace uso del operador $\Delta$, que esta definido como:
+$$\Delta F_n = F_{n+1} - F_n$$
+Para este ejercicio se aplicara $2$ veces el operador $\Delta$.
+(Ver Apendice para más info. \st{Aun no esta hecho LOL}).
+
+Una vez aplicado el operador $\Delta$, se busca las raices del polinomio caracteristico asociado a la ecuación  del lado izquierdo de la ecuación ($\dagger$), tal que:
+
+\begin{align*}
+    \lambda^2 -7\lambda + 12 &= 0\\
+    (\lambda -3)(\lambda -4)&= 0
+\end{align*}
+Obteniendo asi $2$ raices $\lambda_3 = 3$ y $\lambda_4 = 4$. Sin embargo, recordad que usamos $2$ veces el operador $\Delta$, se debe añadir $2$ nuevas raices con valor $1$, las cuales definiremos como $\lambda_1 =1$ y $\lambda_2 = 1$, siendo $\lambda_2$ una multplicidad de $\lambda_1$.
+Con estas raices se obtiene la siguiente solución general:
+
+\begin{align*}
+    P(n) &= C_1 \cdot \lambda_1^n + C_2 \cdot n \cdot \lambda_2^n + C_3 \cdot \lambda_3^n + C_4 \cdot \lambda_4^n\\
+    P(n) &= C_1 \cdot 1^n + C_2 \cdot n \cdot 1^n + C_3 \cdot 3^n + C_4 \cdot 4^n\\
+    P(n) &= C_1+ C_2 \cdot n + C_3 \cdot 3^n + C_4 \cdot 4^n \tag{$\star$}
+\end{align*}
+
+Como ya deberia haberse percatado, debemos encontrar los valores de $C_1$,$C_2$,$C_3$ y $C_4$ haciendo uso de los valores iniciales $P(0)$ y $P(1)$. Sin embargo, necesitamos encontrar $4$ variables y solo tenemos $2$ valores iniciales, por lo que calculamos nuevos valores iniciales para los $2$ siguientes terminos de $n$, es decir $P(2)=13$ y $P(3)=81$. Con esto \st{(y un bizcocho)} obtenemos un sistema de ecuaciones de 4x4, tal que:
+$$
+  \left.
+    \begin{array}{rcrrcr}
+      P(0)=1 &\rightarrow& C_1 + C_3 + C_4 &=&1\\
+      P(1)=2 &\rightarrow& C_1 +C_2 + 3C_3 +4C_4 &=&2\\
+      P(2)=13 &\rightarrow& C_1 + 2C_2+9C_3 +16C_4&=&13\\
+      P(3)=81&\rightarrow& C_1 +3C_2+27C_3+64C_4&=&81
+      \end{array}
+  \right\}
+  \begin{array}{rcr}
+       C_1&=& \frac{9}{4} \\
+       C_2&=&-\frac{17}{4}  \\
+       C_3&=& \frac{1}{2} \\
+       C_4&=& 3
+  \end{array}
+$$
+Reemplazando los valores de $C_1$,$C_2$,$C_3$ y $C_4$ en la solución general ($\star$), tal que:
+\begin{align*}
+    \therefore P(n) &= \frac{9}{4} + \frac{n}{2}-\frac{17}{4}  \cdot 3^n + 3 \cdot 4^n\quad, n\ge0
+\end{align*}
 \end{solution}

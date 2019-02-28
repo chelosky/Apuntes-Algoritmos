@@ -9,5 +9,55 @@ Resuelva la ecuación:
 %\begin{proof}
 %\end{proof}
 \begin{solution}
-SOLUCION
+Primeramente observe que la ecuación se puede re-escribir como:
+\begin{align*}
+    A_n &= 2(A_{n-1} - A_{n-2})\\
+    A_n &= 2A_{n-1} - 2A_{n-2}\\
+    A_n - 2A_{n-1} + 2A_{n-2} &= 0
+\end{align*}
+Dejando una ecuación Homogénea de primer orden, para la cual debemos encontrar su polinomio característico:
+\begin{align*}
+    \lambda^2 -2\lambda +2 &= 0
+\end{align*}
+La cual tiene como solución una raiz complejo $\lambda_{\star} = \frac{1}{2} \pm \frac{1}{2}i$. 
+
+Recordad, que si tenemos una raiz compleja del tipo $\lambda = a \pm bi$, donde $a,b \in \mathbb{R}$. Entonces, esta se puede se representada en su forma polar como:
+
+$$\lambda = r(\cos{\theta} \pm i\sin{\theta})$$
+
+En donde el radio $r=\sqrt{a^2 + b^2}$ y el angulo $\theta = \arctan\left(\frac{b}{a}\right)$.
+
+En nuestro caso para $\lambda_{\star} = \frac{1}{2} \pm \frac{1}{2}i$, se tiene que su radio es $r = \sqrt{\frac{1}{2}^2 + \frac{1}{2}^2} =\frac{\sqrt{2}}{2}$ y su angulo es $\theta = \arctan\left(\frac{\frac{1}{2}}{\frac{1}{2}}\right)=\frac{\pi}{4}$. Obteniendo asi la siguiente expresion polar:
+$$\lambda_{\star} = \frac{\sqrt{2}}{2}(\cos{\left( \frac{\pi}{4} \right)} \pm i\sin{\left( \frac{\pi}{4} \right)})$$
+
+Esta raiz $\lambda_{\star}$ se puede descomponer en $2$ raices, una para la parte imaginaria positiva y otra negativa, tal que:
+\begin{align*}
+    \lambda_1 &= \frac{\sqrt{2}}{2}(\cos{\left( \frac{\pi}{4} \right)}+i\sin{\left(\frac{\pi}{4} \right)}) \\
+    \lambda_2 &= \frac{\sqrt{2}}{2}(\cos{\left( \frac{\pi}{4} \right)}-i\sin{\left(\frac{\pi}{4} \right)}) 
+\end{align*}
+
+Aplicando el Teorema de Moivre(Ver Apendice), se obtiene la siguiente solución general:
+
+\begin{align*}
+    A_n &= C_1 \cdot \lambda_1^n + C_2 \cdot \lambda_2^n \\
+    A_n  &= C_1 \cdot \left(\frac{\sqrt{2}}{2}\right)^n (\cos{\left( n\frac{\pi}{4} \right)}+i\sin{\left(n\frac{\pi}{4} \right)}) + C_2 \cdot \left(\frac{\sqrt{2}}{2}\right)^n(\cos{\left( n\frac{\pi}{4} \right)}-i\sin{\left(n\frac{\pi}{4} \right)}) \tag{$\star$}
+\end{align*}
+Haciendo uso de los valores iniciales $A_0$ y $A_1$, se obtiene un \st{HORRIBLE} sistema de ecuaciones de 2x2, tal que:
+$$
+  \left.
+    \begin{array}{rcrrcr}
+      A_0=1 &\rightarrow& C_1 + C_2 &=&1\\
+      A_1=2 &\rightarrow& C_1(\frac{1}{2}+i\frac{1}{2})+C_2(\frac{1}{2}-i\frac{1}{2}) &=&2
+      \end{array}
+  \right\}
+  \begin{array}{rcr}
+       C_1&=& \frac{1}{2}(1-3i)  \\
+       C_2&=& \frac{1}{2}(1+3i)
+  \end{array}
+$$
+Reemplazando los valores de $C_1$ y $C_2$ en la solución general ($\star$), tal que:
+\begin{multline*}
+\therefore A_n = \frac{1}{2}(1-3i) \cdot \left(\frac{\sqrt{2}}{2}\right)^n (\cos{\left( n\frac{\pi}{4} \right)}+ i\sin{\left(n\frac{\pi}{4} \right)})\\
+ +\frac{1}{2}(1+3i) \cdot \left(\frac{\sqrt{2}}{2}\right)^n(\cos{\left( n\frac{\pi}{4} \right)}-i\sin{\left(n\frac{\pi}{4} \right)}) \quad n\ge0
+\end{multline*}
 \end{solution}

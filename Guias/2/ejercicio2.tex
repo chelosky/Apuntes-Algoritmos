@@ -10,5 +10,38 @@ Resolver la ecuación:
 %\begin{proof}
 %\end{proof}
 \begin{solution}
-SOLUCION
+Primeramente hay que mencionar que la ecuación original se puede escribir como:
+\begin{align*}
+    T(n) +3 T(n-1) -4T(n-3) &= 0
+\end{align*}
+Se observa que esta es una Ecuación Homogénea de primer orden. Para resolver esta ecuación se calcula su polinomio característico:
+\begin{align*}
+    \lambda^3+3\lambda^2-4&=0\\
+    (\lambda-1)(\lambda^2 +4\lambda+4)&=0\\
+    (\lambda-1)(\lambda+2)^2&=0
+\end{align*}
+Obteniendo asi las raices $\lambda_1 =1$ y $\lambda_2 = -2$ donde la $\lambda_2$ tiene multiplicidad $2$,obteniendo asi la sigueinte solución general:
+\begin{align*}
+    T(n) = C_1 \cdot \lambda_1^n + C_2 \cdot \lambda_2^n + C_3\cdot n\cdot \lambda_3^n \\
+    T(n) = C_1 \cdot (1)^n + C_2 \cdot (-2)^n + C_3\cdot n\cdot (-2)^n \tag{$\star$}
+\end{align*}
+Haciendo uso de los valores iniciales $T(0)=1$,$T(1)=2$ y $T(2)=6$, se obtiene un sistema de ecuaciones de 3x3, tal que:
+$$
+  \left.
+    \begin{array}{rcrrcr}
+      T(0)=1 &\rightarrow& C_1 + C_2 &=&1\\
+      T(1)=2 &\rightarrow& C_1 - 2C_2 -2C_3 &=&2\\
+      T(2)=6 &\rightarrow& C_1 + 4C_2+8C_3 &=&6
+      \end{array}
+  \right\}
+  \begin{array}{rcr}
+       C_1&=&2  \\
+       C_2&=&-1  \\
+       C_3&=& 1
+  \end{array}
+$$
+Reemplazando los valores de $C_1$,$C_2$ y $C_3$ en la solución general ($\star$), tal que:
+\begin{align*}
+    \therefore T(n) &= 2 \cdot (1)^n - (-2)^n + n(-2)^n\quad, n\ge0
+\end{align*}
 \end{solution}
