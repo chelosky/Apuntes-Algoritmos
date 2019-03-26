@@ -1,8 +1,57 @@
 \question{
 Resuelva la ecuación con un cambio de variable adecuado:
-T(n) = 2T(n-2) + 3, n > 2
+\begin{center}
+$T(n) = 2T(n-2) + 3, n > 2$
+
 T(2) = 3
+\end{center}
 }
 \begin{solution}
-  JEJEJEJEJEJEJEJEJEJJEJE
+  Calculamos 3 condiciones de bordes más para determinar el cambio de variable:
+  \begin{center}
+      T(4) = 9
+      
+      T(6) = 21
+      
+      T(8) = 45
+  \end{center}
+  
+  Como 2, 4, 6, 8 son pares, el cambio de variable queda:
+  \begin{center}
+      n = 2k , $k \geq 1$
+  \end{center}
+  
+  Hacemos el cambio de varible en la ecuación inicial:
+  \begin{center}
+      T(2k) = 2T(2k-2) + 3
+      
+      T(2k) = 2T(2(k-1)) + 3 ; T(2k) = $X_k$
+      
+      $X_k = 2X_{k-1} + 3$
+  \end{center}
+  
+  La ecuación que queda la debemos resolver con factor sumante:
+  \begin{center}
+      $X_k = 2X_{k-1} + 3$
+      
+      $X_1 = T(2) = 3$
+      
+      $S_k = \frac{1}{2^k} ; W_1 = \frac{1}{2} \cdot 3 \cdot 1 = \frac{3}{2}$
+      
+      $\frac{X_k}{2^k} = \frac{X_{k-1}}{2^{k-1}} + \frac{3}{2^k} ; \frac{X_k}{2^k} = W_k$
+      
+      $W_k = W_{k-1}$ + 3 $\left( \frac{1}{2^k} \right)$
+      
+      $W_k - W_{k-1}$ = 3 $\left( \frac{1}{2^k} \right)$
+      
+      $W_k - W_1 = 3 [ \displaystyle\sum_{i=1}^{k} (\frac{1}{2})^i - \frac{1}{2} ]$
+      
+      $W_k - \frac{3}{2} = 3 [ \frac{(\frac{1}{2})^{k+1} - \frac{1}{2}}{\frac{1}{2}-1} - \frac{1}{2} ]$
+      
+      $W_k = 3 - 3 \cdot \frac{1}{2^k} ; W_k = \frac{X_k}{2^k}$
+      
+      $X_k = 3 \cdot 2^k - 3 ; X_k = T(n) \longleftrightarrow k = \frac{n}{2}$
+      
+      $T(n) = 3 \sqrt{2^n} , n = 2k , k \geq 1$
+  \end{center}
 \end{solution}

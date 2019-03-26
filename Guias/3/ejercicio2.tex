@@ -7,5 +7,59 @@ Resolver la ecuación:
 \end{align*}
 }
 \begin{solution}
-  JEJEJEJEJEJEJEJEJEJJEJE
+  Calculamos otra condición de borde:
+  \begin{center}
+      $A_2 = 7$
+  \end{center}
+  
+  Dejamos los $A_n$ al lado derecho de la ecuación:
+  \begin{center}
+      $A_n - 6A_{n-1} + 12A_{n-2} = 7$ 
+      
+      Aplicamos 1 vez el operador  $\bigtriangleup$
+      
+      $A_n - 6A_{n-1} + 12A_{n-2} = 0$ 
+  \end{center}
+  
+  Resolvemos el polinomio característico de ecuación:
+  \begin{center}
+      $\lambda^2 - 6\lambda + 12 = 0$
+      
+      $\lambda = \frac{6 \pm \sqrt{36 - 4\cdot1\cdot12}}{2} = \frac{6 \pm \sqrt{36 - 48}}{2} = \frac{6 \pm \sqrt{-12}}{2}$
+      
+      $\lambda = 3 \pm \sqrt{3}i$
+      
+      Además debemos considerar la raíz por aplicar el operador $\bigtriangleup$, entonces $\lambda$ queda:
+      
+      $\lambda_1 = 1$
+      
+      $\lambda_2 = 3 + \sqrt{3}i = 2\sqrt{3}(cos(\frac{\pi}{6}) + isen(\frac{\pi}{6}))$
+      
+      $\lambda_3 = 3 - \sqrt{3}i = 2\sqrt{3}(cos(\frac{\pi}{6}) - isen(\frac{\pi}{6}))$
+  \end{center}
+  
+  La solución general queda:
+  \begin{center}
+      $A_n = C_1 + C_2(2\sqrt{3})^n(cos(\frac{n\pi}{6}) + isen(\frac{n\pi}{6})) + C_3(2\sqrt{3})^n(cos(\frac{n\pi}{6}) - isen(\frac{n\pi}{6}))$
+  \end{center}
+  
+  Calculamos la solución particular utilizando las condiciones de borde:
+  \begin{center}
+      $A_0 \implies 0 = C_1 + C_2 + C_3$
+      
+      $A_1 \implies 0 = C_1 + C_2(2\sqrt{3})(\frac{\sqrt{3}}{2} + \frac{i}{2}) + C_3(2\sqrt{3})(\frac{\sqrt{3}}{2} - \frac{i}{2})$
+      
+      $A_2 \implies 7 = C_1 + C_2\cdot12(\frac{1}{2} + \frac{i\sqrt{3}}{2}) + C_3\cdot12(\frac{1}{2} - \frac{i\sqrt{3}}{2})$
+  \end{center}
+  
+  Una vez resuelto el sistema de ecuaciones, se obtiene:
+  \begin{center}
+      $C_1 = -1, C_2 = \frac{3+2\sqrt{3}i}{6}, C_3 = \frac{3-2\sqrt{3}i}{6}$
+  \end{center}
+  
+  Por último reemplazamos los valores en la solución general:
+  \begin{center}
+      $A_n = -1 + (\frac{3+2\sqrt{3}i}{6})\cdot(2\sqrt{3})^n\cdot(cos(\frac{n\pi}{6})+isen(\frac{n\pi}{6}))+(\frac{3-2\sqrt{3}i}{6})\cdot(2\sqrt{3})^n\cdot(cos(\frac{n\pi}{6})-isen(\frac{n\pi}{6})), n \geq 0$
+  \end{center}
+  hoa :D
 \end{solution}

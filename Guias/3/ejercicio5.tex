@@ -1,9 +1,67 @@
 \question{
 Resolver:
-Xn+2 = Xn + 8n + 8, n > 1
-X0 = 1
-X1 = 3
+\begin{center}
+$X_{n+2}$ = $X_n$ + 8n + 8, $n > 1$
+
+$X_0$ = 1
+
+$X_1$ = 3
+\end{center}
 }
 \begin{solution}
-  JEJEJEJEJEJEJEJEJEJJEJE
+  En primer lugar, calcularemos dos condiciones de borde más:
+  \begin{center}
+      $X_2$ = 9, $X_3$ = 19
+  \end{center}
+  
+  Dejaremos a un lado los $X_n$:
+  \begin{center}
+      $X_{n+2} - X_n$ = 8n + 8
+  \end{center}
+  
+  Aplicaremos 2 veces el operador $\bigtriangleup$ para reducir el polinomio (parte derecha) para que sea 0. Resolvemos el polinomio característico de la ecuación:
+  \begin{center}
+    $X_{n+2} - X_n = 0$
+  
+    Polinomio característico: 
+    
+    $\lambda^2$ - 1 = 0
+    
+    ($\lambda$ + 1)($\lambda$ - 1) = 0
+    
+    $\lambda_1$ = -1, $\lambda_2$ = 1
+    
+    Como aplicamos dos veces el operador $\bigtriangleup$, consideramos las 2 raíces iguales a 1:
+    
+    $\lambda_3$ = 1, $\lambda_4$ = 1
+  \end{center}
+  
+  La solución general queda:
+  \begin{center}
+      $X_n = C_1 + C_2 \cdot n + C_3 \cdot n^2 + C_4 \cdot (-1)^n$
+  \end{center}
+  
+  Debemos calcular la solución particular con las 4 condiciones de borde que tenemos:
+  \begin{center}
+      $X_0 \implies 1 = C_1 + C_4$
+      
+      $X_1 \implies 3 = C_1 + C_2 + C_3 - C_4$
+      
+      $X_2 \implies 9 = C_1 + 2C_2 + 4C_3 + C_4$
+      
+      $X_3 \implies 19 = C_1 + 3C_2 + 9C_3 - C_4$
+  \end{center}
+  
+  Una vez determinadas las soluciones, se debe resolver el sistema de ecuaciones, lo que nos da:
+  \begin{center}
+      $C_1 = 1, C_2 = 0, C_3 = 2, C_4 = 0$
+  \end{center}
+  
+  Por último, reemplazamos los valores en la solución general:
+  \begin{center}
+      $X_n = 1 + 0 \cdot n + 2 \cdot n^2 + 0 \cdot (-1)^n$
+      
+      $\implies X_n = 1 + 2 \cdot n^2 , n \geq 0$
+  \end{center}
+  
 \end{solution}

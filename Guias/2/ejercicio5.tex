@@ -8,5 +8,49 @@ Resolver:
 %\begin{proof}
 %\end{proof}
 \begin{solution}
-SOLUCION
+Primeramente la ecuación original se re-escribir como:
+\begin{align*}
+    X_{n+1} - X_n&=  2n +3 \tag{$\dagger$}
+\end{align*}
+Como se vio previamente, este tipo de ecuaciones  se llaman Ecuaciones NO Homogéneas de primer orden. Para resolver este tipo de ecuaciones se hace uso del operador $\Delta$, que esta definido como:
+$$\Delta F_n = F_{n+1} - F_n$$
+Para este ejercicio se aplicara $2$ veces el operador $\Delta$, dado que el mayor exponente de la polinomio del lado derecho de la ecuación ($\dagger$) es $n$.
+
+Una vez aplicado el operador $\Delta$, se busca las raices del polinomio caracteristico asociado a la ecuación  del lado izquierdo de la ecuación ($\dagger$), tal que:
+
+\begin{align*}
+    \lambda -1  &= 0\\
+    \lambda &= 1
+\end{align*}
+Obteniendo asi $1$ raiz $\lambda_1 = 1$. Sin embargo, recordad que usamos $2$ veces el operador $\Delta$, se debe añadir $2$ nuevas raices con valor $1$, las cuales definiremos como $\lambda_2 =1$ y $\lambda_3 = 1$.
+
+Además dado que todas las raices son iguales, debe aplicarse una multplicidad a $\lambda_2$ y una multplicidad doble a $\lambda_3$.
+
+Con estas raices se obtiene la siguiente solución general:
+
+\begin{align*}
+    X_n &= C_1 \cdot \lambda_1^n + C_2 \cdot n \cdot \lambda_2^n + C_3 \cdot n^2 \cdot \lambda_3^n\\
+    X_n &= C_1 \cdot 1^n + C_2 \cdot n \cdot 1^n + C_3 \cdot n^2 \cdot 1^n\\
+    X_n &= C_1 + C_2 \cdot n + C_3 \cdot n^2 \tag{$\star$}
+\end{align*}
+
+Como ya deberia haberse percatado, debemos encontrar los valores de $C_1$,$C_2$ y $C_3$ haciendo uso de los valores iniciales $X_0$. Sin embargo, necesitamos encontrar $3$ variables y solo tenemos $1$ valor inicial, por lo que calculamos nuevos valores iniciales para los $2$ siguientes terminos de $n$, es decir $X_1=4$ y $X_2=9$. Con esto \st{(y un bizcocho)} obtenemos un sistema de ecuaciones de 3x3, tal que:
+$$
+  \left.
+    \begin{array}{rcrrcr}
+      X_0=1 &\rightarrow& C_1 &=&1\\
+      X_1=4 &\rightarrow& C_1 +C_2 + C_3 &=&4\\
+      X_2=9 &\rightarrow& C_1 + 2C_2+4C_3 &=&9
+      \end{array}
+  \right\}
+  \begin{array}{rcr}
+       C_1&=& 1 \\
+       C_2&=&2 \\
+       C_3&=& 1
+  \end{array}
+$$
+Reemplazando los valores de $C_1$, $C_2$ y $C_3$ en la solución general ($\star$), tal que:
+\begin{align*}
+    \therefore X_n &= 1 + 2n + n^2 \quad, n\ge0
+\end{align*}
 \end{solution}

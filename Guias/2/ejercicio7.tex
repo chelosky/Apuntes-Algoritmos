@@ -16,5 +16,76 @@ Plantear la ecuación de recurrencia para $T(n)$ y resolverla considerando un ca
 %\begin{proof}
 %\end{proof}
 \begin{solution}
-SOLUCION
+Sea $T(n)$ la costo del algoritmo $IN(L)$. Sabemos que $T(1)=0$, dado que si $n=1$ entonces la sentencia condicional seria falsa, por lo que no podria ejecutar las demás instrucciones.
+
+En terminos generales, el termino $T(n)$ ejecutara la instrucción de dividir a $L$, $1$ vez con un costo de $n^2$ y además se llama recursivamente $3$ veces a la función $IN()$ pero con los terminos $L1$, $L2$ y $L3$, que tienen un tamaño de $\frac{n}{3}$, dado que son partes iguales de $L$. Con esto la ecuación de recurrencia resultante es:
+\begin{align*}
+    T(n) &= 3T\left(\frac{n}{3}\right) + n^2 \quad, n >1\\
+    T(1) &= 0
+\end{align*}
+Usando el siguiente cambio de variable:
+\begin{align*}
+    n=3^k \xrightarrow{} \log_3(n)=k
+\end{align*}
+Reemplazando dicho cambio en la ecuación de recurrencia inicial:
+\begin{align*}
+    T(3^k) &= 3T\left(3^{k-1}\right) + 3^{2k} \tag{$\star$}
+\end{align*}
+Definimos una nueva sustitución:
+\begin{align*}
+      X_k = T\left(3^k\right)
+\end{align*}
+Con los siguientes valores iniciales:
+  $$
+  \left.
+    \begin{array}{rcrrrrlcr}
+      n=1 &\implies& T(1)&=&X_0&=&0 &\rightarrow& k=0\\
+      n=3 &\implies& T(3)&=&X_1&=&9 &\rightarrow& k=1\\
+      n=9 &\implies& T(9)&=&X_2&=&108 &\rightarrow& k=2
+    \end{array}
+  \right.
+  $$
+Reemplazando $X_k$ en la ecuación ($\star$), tal que:
+\begin{align*}
+    X_k &= 3 X_{k-1} +3^{2k} \quad, n>0 \tag{$\dagger$}
+\end{align*}
+Se observa que ($\dagger$) es una Ecuación Lineal con coeficientes constantes, por ello se busca su factor sumante asociado, tal que:
+\begin{align*}
+    S_k &= \frac{1}{3^k}
+\end{align*}
+Al multiplicar dicho factor sumante $S_k$, en ambos lados de la ecuación ($\dagger$), se obtiene:
+\begin{align*}
+    S_k X_k &= 3 S_k X_{k-1} + 3^{2K} S_k \\
+    \frac{1}{3^k}X_k &= 3 \frac{1}{3^k} X_{k-1} + 3^{2k} \frac{1}{3^k}\\
+    \frac{1}{3^k} X_k &= \frac{1}{3^{k-1}}X_{k-1} + 3^k \tag{$\dagger'$}
+\end{align*}
+Ahora definamos que:
+\begin{align*}
+    W_k = \frac{X_k}{3^k} \xrightarrow{con} W_{k-1}=\frac{X_{k-1}}{3^{k-1}}
+\end{align*}
+Con el siguiente nuevo valor inicial:
+\begin{align*}
+    W_0 = X_0a_0S_0 = 0\cdot 1\cdot \frac{1}{3^0} = 0
+\end{align*}
+Haciendo el reemplazo de $W_k$ en la ecuación ($\dagger'$), se obtiene:
+\begin{align*}
+    W_k &= W_{k-1} +3^k \quad, k>0\\
+    W_0
+\end{align*}
+Resolviendo esta ecuación de recurrencia:
+\begin{align*}
+    W_k - W_{k-1} &= 3k \quad \cdot \text{/} \sumatoria{i=1}{k}\\
+    \sumatoria{i=1}{k} \left(W_i - W_{i-1} \right) &= \sumatoria{i=1}{k}3^i \\
+    W_k - W_0 &= \frac{3^{k+1}-3}{2}\\
+    W_k &= \frac{3}{2}(3^k -1)
+\end{align*}
+Volviendo a la termino original con $\frac{X_k}{3^k}=W_k$, tal que:
+\begin{align*}
+    \frac{X_k}{3^k}&=\frac{3}{2}(3^k-1)\\
+    X_k &= \frac{3}{2} 3^k (3^k -1)
+\end{align*}
+Volviendo a la variable original con $n=3^k \rightarrow X_k=T(n)$, tal que:
+\begin{align*}
+    \therefore T(n) = \frac{3}{2}n(n-1)\quad ,n=3k \text{ , } k\ge0
+\end{align*}
 \end{solution}

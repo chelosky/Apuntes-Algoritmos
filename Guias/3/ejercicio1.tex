@@ -28,7 +28,7 @@ Resolver la ecuación con un cambio de variable:
       T(3^k) &= 2T(3^{k-1}) + 3^{k-1}
   \end{align*}
 
-  Hacemos una nueva sustitución para poder resolver la ecuación y determinamos su condición inicial:
+  Hacemos una nueva sustitución para poder resolver la ecuación y determinamos su condición inicial:    
   \begin{align*}
       X_k = T(3^k) \implies X_{k-1} = T(3^{k-1})
   \end{align*}
@@ -38,8 +38,40 @@ Resolver la ecuación con un cambio de variable:
       Si $k = 0$ $\implies$ $n = 1$ $\implies$ $T(1) = 0$
       
       Por lo tanto la condición inicial queda:
-      
       $$X_0 = 0$$
+  \end{center}
+  
+  Después de estos calculos, la ecuación de recurrencia queda:
+  \begin{center}
+      $X_k$ = 2$X_{k-1}$ + $3^{k-1}$
+      
+      $X_0$ = 0
+  \end{center}
+  
+  Ahora debemos resolver la ecuación utilizando factor sumante:
+  \begin{center}
+    $S_k =  \frac{1}{2^k}$ ; $W_0 = 0 \cdot 1 \cdot 1 = 0$
+    
+    $\frac{X_k}{2^k} = \frac{X_{k-1}}{2^{k-1}} + \frac{3^{k-1}}{2^k} ; \frac{X_k}{2^k} = W_k$
+    
+    $W_k = W_{k-1} + (\frac{3}{2})^k \cdot \frac{1}{3}   /\displaystyle\sum_{i=1}^{k}$
+    
+    $W_k - W_0 = \frac{1}{3} \cdot \displaystyle\sum_{i=1}^{k} (\frac{3}{2})^i$
+    
+    $W_k - 0 = \frac{1}{3} \cdot \frac{(\frac{3}{2})^{k+1} - \frac{3}{2}}{\frac{3}{2}-1}$
+    
+    $W_k = \frac{1}{3} \cdot \frac{(\frac{3}{2})^{k+1}-\frac{3}{2}}{\frac{1}{2}} = \frac{1}{3} \cdot 2[(\frac{3}{2})^{k+1} - \frac{3}{2}]$
+    
+    $W_k = \frac{1}{3} \cdot [\frac{3^{k+1}}{2^k} - 3] = \frac{3^k}{2^k} - 1$
+    
+    $W_k = \frac{3^k}{2^k} - 1 ; W_k = \frac{X_k}{2^k}$
+    
+    $X_k = 3^k - 2^k$
+    
+    $X_k = T(n) \longrightarrow  n = 3^k \longrightarrow \log_{3}(n) = k$
+
+    $T(n) = n - 2^{\log_{3}(n)}, n = 3^k, k \geq 0$
+    
   \end{center}
   
 \end{solution}

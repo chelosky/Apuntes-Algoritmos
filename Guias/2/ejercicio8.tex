@@ -8,5 +8,36 @@ Resuelva la ecuación:
 %\begin{proof}
 %\end{proof}
 \begin{solution}
-SOLUCION
+Usando el siguiente cambio de variable:
+\begin{align*}
+    n=5^k \xrightarrow{} \log_5 n=k
+\end{align*}
+Reemplazando dicho cambio de variable en la ecuación original, se obtiene que:
+\begin{align*}
+    X(5^k) &= X(5^{k-1}) + 5^k
+\end{align*}
+Con el valor inicial $k=0$ $\rightarrow$ $X(1)=1$.
+
+Definiendo la siguiente sustitución:
+\begin{align*}
+    X(5^k)&=W_k \rightarrow X(1)=W_0
+\end{align*}
+Aplicando dicha sustitución, se obtiene que:
+\begin{align*}
+    W_k &= W_{k-1} + 5^k
+\end{align*}
+Resolviendo esta ecuación de Recurrencia:
+\begin{align*}
+    W_k - W_{k-1} &= 5^k \quad \cdot \text{/} \sumatoria{i=1}{k}\\
+    \sumatoria{i=1}{k}\left(W_i - W_{i-1} \right) &= \sumatoria{i=1}{k}5^i\\
+    W_k - W_0 &= \frac{5^{k+1} -5}{5-1}\\
+    W_k - 1 &= \frac{5^{k+1} -5}{4}\\
+    W_k &= \frac{5^{k+1}-1}{4}\\
+    W_k &= \frac{5^{k+1}-1}{4}
+\end{align*}
+Volviendo al termino original con $W_k = X(5^k) = X(n)$ y $n=5^k \rightarrow \log_5 n = k$, tal que:
+\begin{align*}
+    X(5^k)&=\frac{5\cdot5^k -1}{4}\\
+    \therefore X(n)&=\frac{5n-1}{4} \quad, n=5^k \text{ , } k \ge 0
+\end{align*}
 \end{solution}
